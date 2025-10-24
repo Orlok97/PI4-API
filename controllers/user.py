@@ -66,7 +66,7 @@ def get_by_id(id):
 def update(id):
   request_body=request.get_json()
   password=request_body['password']
-  user=get_current_user()
+  user=db.get_or_404(User,id)
   hashed_password=hash_password(password)
   try:
     user.name=request_body['name']
