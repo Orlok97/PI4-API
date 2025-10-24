@@ -34,16 +34,12 @@ def get_all():
 @user_bp.route('/', methods=['POST'])
 def create():
   request_body=request.get_json()
-  password=request_body['password']
-  hashed_password=hash_password(password.encode('utf-8'))
-
   try:
     user=User(
         name=request_body['name'],
         lastname=request_body['lastname'],
         email=request_body['email'],
-        telephone='+55'+request_body['telephone'],
-        password=hashed_password
+        telephone='+55'+request_body['telephone']
     )
     db.session.add(user)
     db.session.commit()
