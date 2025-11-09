@@ -6,7 +6,7 @@ from flask_jwt_extended import JWTManager
 from models import db
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"*": {"origins": "*"}},)
 config = Config(app)
 jwt=JWTManager(app)
 router = Router(app)

@@ -36,7 +36,10 @@ def create():
   request_body=request.get_json()
   password=request_body['password']
   hashed_password=hash_password(password.encode('utf-8'))
-
+  if request_body['name'] == '' or request_body['lastname'] == '' or request_body['telephone'] == '' or password == '':
+    return jsonify({
+      'response':'todos os campos devem ser preenchidos'
+    })
   try:
     user=User(
         name=request_body['name'],
