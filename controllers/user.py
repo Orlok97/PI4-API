@@ -25,7 +25,6 @@ def hash_password(password):
   return hashed_pw
 
 @user_bp.route('/', methods=['GET'])
-@jwt_required()
 def get_all():
   users=db.session.execute(db.select(User).order_by(User.id)).scalars()
   dto_list=[user_dto(user) for user in users]
